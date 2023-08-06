@@ -1,5 +1,9 @@
 package SegundoDesafio;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class SegundoDesafio {
     /*
      * Leia um valor de ponto flutuante com duas casas decimais. Este valor representa um valor
@@ -31,6 +35,37 @@ public class SegundoDesafio {
      * Obs.: Utilize ponto (.) para separar a parte decimal.
      */
     public static void main(String[] args) {
+        Scanner entrada;
+        final int[] VALOR_DAS_NOTAS_EM_CENTAVOS = { 10000, 5000, 2000, 1000, 500, 200 };
+        final int[] VALOR_DAS_MOEDAS_EM_CENTAVOS = { 100, 50, 25, 10, 5, 1 };
+        float valorEmReais;
+        int valorEmCentavos;
 
+        entrada = new Scanner(System.in);
+        valorEmReais = 0;
+        valorEmCentavos = 0;
+
+        System.out.print("Digite o valor desejado: ");
+        valorEmReais = entrada.nextFloat();
+
+        if (valorEmReais >= 0 && valorEmReais <= 1000000.00) {
+            valorEmCentavos = (int) (valorEmReais * 100);
+
+            System.out.println("NOTAS:");
+            for (int nota : VALOR_DAS_NOTAS_EM_CENTAVOS) {
+                int quantidadeNotas = valorEmCentavos / nota;
+                valorEmCentavos %= nota;
+                System.out.println("\t\t" + quantidadeNotas + " nota(s) de R$ " + (nota / 100.0));
+            }
+
+            System.out.println("MOEDAS:");
+            for (int moeda : VALOR_DAS_MOEDAS_EM_CENTAVOS) {
+                int quantidadeMoedas = valorEmCentavos / moeda;
+                valorEmCentavos %= moeda;
+                System.out.println("\t\t" + quantidadeMoedas + " moeda(s) de R$ " + (moeda / 100.0));
+            }
+        } else {
+            System.out.println("Valor inválido. Insira um valor entre zero e um milhão");
+        }
     }
 }
