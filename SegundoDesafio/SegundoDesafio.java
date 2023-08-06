@@ -1,7 +1,5 @@
 package SegundoDesafio;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class SegundoDesafio {
@@ -19,19 +17,19 @@ public class SegundoDesafio {
      *
      * Exemplo de Entrada   Exemplo de Saída
      * 576.73               NOTAS:
-     *                      5   nota(s)     de      R$      100.00
-     *                      1   nota(s)     de      R$      50.00
-     *                      1   nota(s)     de      R$      20.00
-     *                      0   nota(s)     de      R$      10.00
-     *                      1   nota(s)     de      R$      5.00
-     *                      0   nota(s)     de      R$      2.00
+     *                              5   nota(s)     de      R$      100.00
+     *                              1   nota(s)     de      R$      50.00
+     *                              1   nota(s)     de      R$      20.00
+     *                              0   nota(s)     de      R$      10.00
+     *                              1   nota(s)     de      R$      5.00
+     *                              0   nota(s)     de      R$      2.00
      *                      MOEDAS:
-     *                      1   moeda(s)     de      R$      1.00
-     *                      1   moeda(s)     de      R$      0.50
-     *                      0   moeda(s)     de      R$      0.25
-     *                      2   moeda(s)     de      R$      0.10
-     *                      0   moeda(s)     de      R$      0.05
-     *                      3   moeda(s)     de      R$      0.01
+     *                              1   moeda(s)     de      R$      1.00
+     *                              1   moeda(s)     de      R$      0.50
+     *                              0   moeda(s)     de      R$      0.25
+     *                              2   moeda(s)     de      R$      0.10
+     *                              0   moeda(s)     de      R$      0.05
+     *                              3   moeda(s)     de      R$      0.01
      * Obs.: Utilize ponto (.) para separar a parte decimal.
      */
     public static void main(String[] args) {
@@ -55,14 +53,14 @@ public class SegundoDesafio {
             for (int nota : VALOR_DAS_NOTAS_EM_CENTAVOS) {
                 int quantidadeNotas = valorEmCentavos / nota;
                 valorEmCentavos %= nota;
-                System.out.println("\t\t" + quantidadeNotas + " nota(s) de R$ " + (nota / 100.0));
+                System.out.printf("\t\t%d\tnota(s)\tde\tR$\t%.2f\n", quantidadeNotas, nota / 100.0);
             }
 
             System.out.println("MOEDAS:");
             for (int moeda : VALOR_DAS_MOEDAS_EM_CENTAVOS) {
                 int quantidadeMoedas = valorEmCentavos / moeda;
                 valorEmCentavos %= moeda;
-                System.out.println("\t\t" + quantidadeMoedas + " moeda(s) de R$ " + (moeda / 100.0));
+                System.out.printf("\t\t%d\tmoedas(s)\tde\tR$\t%.2f\n", quantidadeMoedas, moeda / 100.0);
             }
         } else {
             System.out.println("Valor inválido. Insira um valor entre zero e um milhão");
