@@ -1,3 +1,5 @@
+package SegundoDesafio;
+
 public class SegundoDesafio {
     /*
      * Leia um valor de ponto flutuante com duas casas decimais. Este valor representa um valor

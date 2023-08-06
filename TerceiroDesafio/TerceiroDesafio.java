@@ -1,3 +1,5 @@
+package TerceiroDesafio;
+
 public class TerceiroDesafio {
     /*
      * Dado um array de inteiros e um valor alvo, determine o número de pares entre os elementos
