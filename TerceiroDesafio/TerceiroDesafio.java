@@ -1,5 +1,10 @@
 package TerceiroDesafio;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
 public class TerceiroDesafio {
     /*
      * Dado um array de inteiros e um valor alvo, determine o número de pares entre os elementos
@@ -32,6 +37,56 @@ public class TerceiroDesafio {
      * 3
      */
     public static void main(String[] args) {
+        Scanner entrada;
+        int valorAlvo;
+        String valoresParaOVetor;
+        int[] valores;
+        List<String> paresQueResultamNoValor;
+        int numeroDePares;
 
+        entrada = new Scanner(System.in);
+        valorAlvo = 0;
+        valoresParaOVetor = null;
+        valores = null;
+        paresQueResultamNoValor = new ArrayList<>();
+        numeroDePares = 0;
+
+        System.out.print("Digite o valor alvo: ");
+        valorAlvo = entrada.nextInt();
+        entrada.nextLine();
+
+        System.out.print("Digite os valores que deseja conferir: ");
+        valoresParaOVetor = entrada.nextLine();
+
+        valoresParaOVetor = valoresParaOVetor.replaceAll("[\\[\\]]", "");
+
+        valores = Arrays.stream(valoresParaOVetor.split(", "))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+
+        Arrays.sort(valores);
+
+        paresQueResultamNoValor = identificaParesQueGeramOAlvo(valorAlvo, valores);
+
+        numeroDePares = paresQueResultamNoValor.size();
+
+        System.out.println(numeroDePares);
+    }
+
+    public static List<String> identificaParesQueGeramOAlvo(int valorAlvo, int[] valores) {
+        List<String> paresQueResultamNoValor;
+
+        paresQueResultamNoValor = new ArrayList<>();
+
+        for (int i = 0; i < valores.length - 1; i++) {
+            for (int j = i + 1; j < valores.length; j++) {
+                int diferenca = valores[j] - valores[i];
+                if (diferenca == valorAlvo) {
+                    paresQueResultamNoValor.add(valores[j] + " - " + valores[i] + " = " + valorAlvo);
+                }
+            }
+        }
+
+        return paresQueResultamNoValor;
     }
 }
